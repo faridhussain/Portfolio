@@ -85,7 +85,7 @@ export default function Contact() {
     };
 
     return (
-        <section className='w-full max-w-350 mx-auto px-6 lg:px-8 mt-25 lg:mt-33'>
+        <section className='w-full max-w-350 mx-auto px-4 sm:px-6 lg:px-8 mt-25 lg:mt-33 mb-3'>
             <div className='flex flex-col items-center text-center lg:items-start lg:text-left gap-1 mb-12'>
                 <h2 className='sm:text-4xl text-2xl md:text-5xl font-bold leading-tight'>
                     <span className='tracking-tight'>Let&apos;s Build Something.</span>
@@ -97,15 +97,14 @@ export default function Contact() {
             <div className='w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch'>
                 <div className='w-full flex flex-col gap-5'>
                     {contactMethods.map((method) => (
-                        <a key={method.label} href={method.href} target='_blank' rel='noopener noreferrer' className='group w-full flex items-center gap-4 rounded-lg border border-[#F3F4F7] bg-gray-50 md:p-5 sm:p-2 p-1'>
-                            <div className='shrink-0 flex items-center justify-center h-7 w-7 md:w-11 md:h-11 rounded-lg bg-white border border-gray-200 text-[#7b55ce] text-xl'>
+                        <a key={method.label} href={method.href} target='_blank' rel='noopener noreferrer' className='group w-full flex items-center gap-4 rounded-lg border border-[#F3F4F7] bg-gray-50 md:p-5 p-2'>
+                            <div className='shrink-0 flex items-center justify-center h-7 w-7 md:w-11 md:h-11 rounded-lg bg-white border border-gray-200 text-[#7b55ce] text-base sm:text-xl'>
                                 <i className={method.icon}></i>
                             </div>
 
                             <div className='flex flex-col'>
                                 <span className='text-xs md:text-sm text-[#565d6e] font-light'>{method.label}</span>
-
-                                <span className='text-base md:text-lg font-medium tracking-tight'>{method.value}</span>
+                                <span className='text-sm sm:text-lg font-medium tracking-tight'>{method.value}</span>
                             </div>
 
                             <i className='ri-arrow-right-up-line md:text-lg text-gray-400 ml-auto transition-all duration-300 group-hover:text-[#7b55ce] group-hover:-translate-y-1 group-hover:translate-x-1'></i>
