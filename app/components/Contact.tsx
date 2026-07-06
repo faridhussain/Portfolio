@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import { useToast } from '../providers/ToastProvider';
 
 type ContactMethod = {
     label: string;
@@ -48,6 +49,7 @@ export default function Contact() {
     });
 
     const [loading, setLoading] = useState(false);
+    const { showToast } = useToast();
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setForm((prev) => ({
@@ -74,7 +76,7 @@ export default function Contact() {
                 throw new Error(data.message || 'Something went wrong.');
             }
 
-            alert('Email sent successfully!');
+            showToast('success', 'Message sent!', 'Thanks for reaching out. I’ll get back to you as soon as possible.');
 
             setForm({
                 name: '',
@@ -83,7 +85,7 @@ export default function Contact() {
             });
         } catch (error) {
             console.error(error);
-            alert(error instanceof Error ? error.message : 'Failed to send email.');
+            showToast('error', 'Failed to send message', error instanceof Error ? error.message : 'Something went wrong. Please try again.');
         } finally {
             setLoading(false);
         }
