@@ -52,7 +52,7 @@ export default function Projects() {
 
                     return (
                         <div key={project.title} className={`group h-full flex flex-col rounded-lg border border-gray-200 overflow-hidden hover:shadow duration-300 ${isOrphan ? 'md:col-span-2 md:max-w-md md:mx-auto lg:col-span-1 lg:max-w-none lg:mx-0' : ''}`}>
-                            <div className='relative w-full h-48 overflow-hidden bg-gray-100 shrink-0'>
+                            <div className='relative w-full aspect-16/10 lg:aspect-video overflow-hidden bg-gray-100 shrink-0'>
                                 <Image src={project.image} alt={`${project.title} preview`} fill className='object-cover duration-500' />
                             </div>
 
