@@ -63,12 +63,12 @@ const skillGroups: SkillGroup[] = [
 
 export default function Skills() {
     return (
-        <section className='max-w-350 mx-auto px-6 lg:px-8 mt-20 lg:mt-28'>
+        <section className='max-w-350 mx-auto px-4 sm:px-6 lg:px-8 mt-25 lg:mt-33'>
             <div className='flex flex-col items-center text-center lg:items-start lg:text-left gap-1 mb-12'>
-                <h2 className='text-4xl md:text-5xl font-bold leading-tight'>
+                <h2 className='sm:text-4xl text-2xl md:text-5xl font-bold leading-tight'>
                     <span className='tracking-tight'>What I Work With.</span>
                 </h2>
-                <p className='text-lg text-[#565d6e] font-light max-w-2xl'>Technologies I use to design, build, and ship projects.</p>
+                <p className='md:text-lg text-base text-[#565d6e] font-light max-w-2xl'>Technologies I use to design, build, and ship projects.</p>
             </div>
 
             <div className='flex flex-col gap-10'>
@@ -76,15 +76,15 @@ export default function Skills() {
                     <div key={group.label ?? index} className='flex flex-col gap-4'>
                         {group.label && <h3 className='text-xl md:text-2xl font-bold tracking-tight'>{group.label}</h3>}
 
-                        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5'>
+                        <div className='grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3 lg:gap-5'>
                             {group.skills.map((skill) => (
-                                <a key={skill.name} href={skill.url} target='_blank' rel='noopener noreferrer' className='group flex flex-col gap-2 rounded-lg border border-[#F3F4F7] bg-gray-50 p-5'>
+                                <a key={skill.name} href={skill.url} target='_blank' rel='noopener noreferrer' className='group flex flex-col gap-2 rounded-lg border border-[#F3F4F7] bg-gray-50 p-3 md:p-5'>
                                     <div className='flex items-center justify-between'>
-                                        <h4 className='text-lg font-medium tracking-tight'>{skill.name}</h4>
-                                        <i className='ri-arrow-right-up-line text-lg text-gray-400 transition-all duration-300 group-hover:text-[#7b55ce] group-hover:-translate-y-1 group-hover:translate-x-1'></i>
+                                        <h4 className='text-sm md:text-lg font-medium tracking-tight'>{skill.name}</h4>
+                                        <i className='ri-arrow-right-up-line text-sm sm:text-lg text-gray-400 transition-all duration-300 group-hover:text-[#7b55ce] group-hover:-translate-y-1 group-hover:translate-x-1'></i>
                                     </div>
 
-                                    <p className='text-base text-[#565d6e] font-light leading-relaxed'>{skill.description}</p>
+                                    <p className='text-xs md:text-base text-[#565d6e] font-light leading-relaxed'>{skill.description}</p>
                                 </a>
                             ))}
                         </div>
