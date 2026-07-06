@@ -39,7 +39,7 @@ const projects: Project[] = [
 export default function Projects() {
     return (
         <section className='max-w-350 mx-auto px-6 lg:px-8 mt-25 lg:mt-33'>
-            <div className='flex flex-col items-center text-center lg:items-start lg:text-left gap-1 mb-14'>
+            <div className='flex flex-col items-center text-center lg:items-start lg:text-left gap-1 mb-12'>
                 <h2 className='text-4xl md:text-5xl font-bold leading-tight'>
                     <span className='tracking-tight'>Here&apos;s What I&apos;ve Built.</span>
                 </h2>
@@ -56,7 +56,7 @@ export default function Projects() {
                                 <Image src={project.image} alt={`${project.title} preview`} fill className='object-cover duration-500' />
                             </div>
 
-                            <div className='flex flex-col flex-1 gap-4 p-6'>
+                            <div className='flex flex-col flex-1 gap-4 p-5'>
                                 <div>
                                     <h3 className='text-xl font-medium tracking-tight'>{project.title}</h3>
                                     <p className='mt-2 text-base text-[#565d6e] font-light leading-relaxed'>{project.description}</p>
@@ -71,12 +71,12 @@ export default function Projects() {
                                 </div>
 
                                 <div className='flex gap-3 mt-auto pt-2'>
-                                    <a href={project.liveUrl} target='_blank' rel='noopener noreferrer' className='group/live flex-1 flex items-center justify-center gap-2 bg-[#7b55ce] hover:bg-[#6942b4] duration-300 rounded-lg px-4 py-2.5 text-base font-medium text-white'>
+                                    <a href={project.liveUrl} target='_blank' rel='noopener noreferrer' className='group/live flex-1 flex items-center justify-center gap-1.5 bg-[#7b55ce] hover:bg-[#6942b4] duration-300 rounded-lg px-3 sm:px-4 py-2.5 text-sm sm:text-base font-medium text-white whitespace-nowrap'>
                                         Live Demo
-                                        <i className='ri-arrow-right-up-line transition-transform duration-300 group-hover/live:-translate-y-0.5 group-hover/live:translate-x-0.5'></i>
+                                        <i className='ri-arrow-right-up-line text-base sm:text-lg transition-transform duration-300 group-hover/live:-translate-y-0.5 group-hover/live:translate-x-0.5'></i>
                                     </a>
-                                    <a href={project.githubUrl} target='_blank' className='flex-1 flex items-center justify-center gap-2 border border-gray-300 bg-gray-100 hover:bg-white duration-300 rounded-lg px-4 py-2.5 text-base font-medium text-gray-700'>
-                                        <i className='ri-github-fill'></i>
+                                    <a href={project.githubUrl} target='_blank' rel='noopener noreferrer' className='flex-1 flex items-center justify-center gap-1.5 border border-gray-300 bg-gray-100 hover:bg-white duration-300 rounded-lg px-3 sm:px-4 py-2.5 text-sm sm:text-base font-medium text-gray-700 whitespace-nowrap'>
+                                        <i className='ri-github-fill text-xl mb-0.5'></i>
                                         GitHub
                                     </a>
                                 </div>
