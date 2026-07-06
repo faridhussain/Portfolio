@@ -6,32 +6,37 @@ type ContactMethod = {
     value: string;
     href: string;
     icon: string;
+    external: boolean;
 };
 
 const contactMethods: ContactMethod[] = [
     {
         label: 'Email',
         value: 'faridhussain0011@gmail.com',
-        href: 'mailto:faridhussain0011@gmail.com',
+        href: 'mailto:faridhussain0011@gmail.com?subject=Portfolio%20Inquiry&body=Hi%20Farid,%0A%0AI%20would%20like%20to%20talk%20about...',
         icon: 'ri-mail-line',
+        external: false,
     },
     {
         label: 'GitHub',
         value: 'github.com/faridhussain',
         href: 'https://github.com/faridhussain',
         icon: 'ri-github-fill',
+        external: true,
     },
     {
         label: 'LinkedIn',
         value: 'linkedin.com/in/farid-codes',
         href: 'https://linkedin.com/in/farid-codes',
         icon: 'ri-linkedin-fill',
+        external: true,
     },
     {
         label: 'X',
         value: 'x.com/Farid_HussainX',
         href: 'https://x.com/Farid_HussainX',
         icon: 'ri-twitter-x-line',
+        external: true,
     },
 ];
 
@@ -97,7 +102,7 @@ export default function Contact() {
             <div className='w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch'>
                 <div className='w-full flex flex-col gap-5'>
                     {contactMethods.map((method) => (
-                        <a key={method.label} href={method.href} target='_blank' rel='noopener noreferrer' className='group w-full flex items-center gap-4 rounded-lg border border-[#F3F4F7] bg-gray-50 md:p-5 p-2'>
+                        <a key={method.label} href={method.href} target={method.external ? '_blank' : undefined} rel={method.external ? 'noopener noreferrer' : undefined} className='group w-full flex items-center gap-4 rounded-lg border border-[#F3F4F7] bg-gray-50 md:p-5 p-2'>
                             <div className='shrink-0 flex items-center justify-center h-7 w-7 md:w-11 md:h-11 rounded-lg bg-white border border-gray-200 text-[#7b55ce] text-base sm:text-xl'>
                                 <i className={method.icon}></i>
                             </div>
