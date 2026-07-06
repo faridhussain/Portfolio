@@ -41,6 +41,9 @@ const contactMethods: ContactMethod[] = [
     },
 ];
 
+const nameRegex = /^[A-Za-z]+(?: [A-Za-z]+)*$/;
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export default function Contact() {
     const [form, setForm] = useState({
         name: '',
@@ -50,24 +53,98 @@ export default function Contact() {
 
     const [loading, setLoading] = useState(false);
     const { showToast } = useToast();
+    const [errors, setErrors] = useState({
+        name: '',
+        email: '',
+        message: '',
+    });
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+
         setForm((prev) => ({
             ...prev,
-            [e.target.name]: e.target.value,
+            [name]: value,
         }));
+
+        setErrors((prev) => {
+            const next = { ...prev };
+
+            if (name === 'name') {
+                const trimmed = value.trim();
+
+                if (trimmed.length >= 3 && trimmed.length <= 30 && nameRegex.test(trimmed)) {
+                    next.name = '';
+                }
+            }
+
+            if (name === 'email') {
+                if (emailRegex.test(value.trim())) {
+                    next.email = '';
+                }
+            }
+
+            if (name === 'message') {
+                const trimmed = value.trim();
+
+                if (trimmed.length >= 10 && trimmed.length <= 1000) {
+                    next.message = '';
+                }
+            }
+
+            return next;
+        });
     };
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+
+        const name = form.name.trim();
+        const email = form.email.trim();
+        const message = form.message.trim();
+
+        const newErrors = {
+            name: '',
+            email: '',
+            message: '',
+        };
+
+        if (name.length < 3 || name.length > 30) {
+            newErrors.name = 'Name should be between 3 and 30 characters.';
+        } else if (!nameRegex.test(name)) {
+            newErrors.name = 'Name should contain only letters and single spaces.';
+        }
+
+        if (!emailRegex.test(email)) {
+            newErrors.email = 'Please enter a valid email address.';
+        }
+
+        if (message.length < 10) {
+            newErrors.message = 'Message should be at least 10 characters.';
+        }
+
+        if (message.length > 1000) {
+            newErrors.message = 'Message should not exceed 1000 characters.';
+        }
+
+        if (newErrors.name || newErrors.email || newErrors.message) {
+            setErrors(newErrors);
+            return;
+        }
+
         setLoading(true);
+
         try {
             const response = await fetch('/api/contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(form),
+                body: JSON.stringify({
+                    name,
+                    email,
+                    message,
+                }),
             });
 
             const data = await response.json();
@@ -83,8 +160,14 @@ export default function Contact() {
                 email: '',
                 message: '',
             });
+            setErrors({
+                name: '',
+                email: '',
+                message: '',
+            });
         } catch (error) {
             console.error(error);
+
             showToast('error', 'Failed to send message', error instanceof Error ? error.message : 'Something went wrong. Please try again.');
         } finally {
             setLoading(false);
@@ -119,13 +202,26 @@ export default function Contact() {
                     ))}
                 </div>
 
-                <form onSubmit={handleSubmit} className='w-full flex flex-col gap-4 rounded-lg border border-gray-200 p-2 sm:p-5'>
+                <form noValidate onSubmit={handleSubmit} className='w-full flex flex-col gap-4 rounded-lg border border-gray-200 p-2 sm:p-5'>
                     <div className='flex flex-col gap-1.5'>
                         <label htmlFor='name' className='text-sm text-[#565d6e] font-light'>
                             Name
                         </label>
 
-                        <input id='name' name='name' type='text' value={form.name} onChange={handleChange} required placeholder='Your name' className='w-full rounded-lg border border-gray-300 bg-gray-50 px-3 sm:px-4 sm:py-2.5 py-1.5 text-sm sm:text-base outline-none duration-300 focus:border-[#7b55ce] focus:bg-white' />
+                        <input
+                            id='name'
+                            name='name'
+                            type='text'
+                            value={form.name}
+                            onChange={handleChange}
+                            required
+                            minLength={3}
+                            maxLength={30}
+                            autoComplete='name'
+                            placeholder='Your name'
+                            className={`w-full rounded-lg border px-3 sm:px-4 sm:py-2.5 py-1.5 text-sm sm:text-base outline-none duration-300 bg-gray-50 focus:bg-white ${errors.name ? 'border-red-500 focus:border-red-500' : 'border-gray-300 focus:border-[#7b55ce]'}`}
+                        />
+                        {errors.name && <p className='text-sm text-red-500'>{errors.name}</p>}
                     </div>
 
                     <div className='flex flex-col gap-1.5'>
@@ -133,7 +229,18 @@ export default function Contact() {
                             Email
                         </label>
 
-                        <input id='email' name='email' type='email' value={form.email} onChange={handleChange} required placeholder='you@example.com' className='w-full rounded-lg border border-gray-300 bg-gray-50 px-3 sm:px-4 sm:py-2.5 py-1.5 text-sm sm:text-base outline-none duration-300 focus:border-[#7b55ce] focus:bg-white' />
+                        <input
+                            id='email'
+                            name='email'
+                            type='email'
+                            value={form.email}
+                            onChange={handleChange}
+                            required
+                            autoComplete='email'
+                            placeholder='you@example.com'
+                            className={`w-full rounded-lg border px-3 sm:px-4 sm:py-2.5 py-1.5 text-sm sm:text-base outline-none duration-300 bg-gray-50 focus:bg-white ${errors.email ? 'border-red-500 focus:border-red-500' : 'border-gray-300 focus:border-[#7b55ce]'}`}
+                        />
+                        {errors.email && <p className='text-sm text-red-500'>{errors.email}</p>}
                     </div>
 
                     <div className='flex flex-col gap-1.5'>
@@ -141,7 +248,19 @@ export default function Contact() {
                             Message
                         </label>
 
-                        <textarea id='message' name='message' rows={5} value={form.message} onChange={handleChange} required placeholder='Tell me about your project...' className='w-full resize-none rounded-lg border border-gray-300 bg-gray-50 px-3 sm:px-4 sm:py-2.5 py-1.5 text-sm sm:text-base outline-none duration-300 focus:border-[#7b55ce] focus:bg-white' />
+                        <textarea
+                            id='message'
+                            name='message'
+                            rows={5}
+                            value={form.message}
+                            onChange={handleChange}
+                            required
+                            minLength={10}
+                            maxLength={1000}
+                            placeholder='Tell me about your project...'
+                            className={`w-full resize-none rounded-lg border px-3 sm:px-4 sm:py-2.5 py-1.5 text-sm sm:text-base outline-none duration-300 bg-gray-50 focus:bg-white ${errors.message ? 'border-red-500 focus:border-red-500' : 'border-gray-300 focus:border-[#7b55ce]'}`}
+                        />
+                        {errors.message && <p className='text-sm text-red-500'>{errors.message}</p>}
                     </div>
 
                     <button type='submit' disabled={loading} className='w-full group/submit mt-2 flex items-center justify-center gap-1.5 bg-[#7b55ce] hover:bg-[#6942b4] duration-300 rounded-lg px-4 sm:px-5 sm:py-3 py-2 text-base sm:text-lg font-medium text-white cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed'>
