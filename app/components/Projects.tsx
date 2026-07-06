@@ -38,12 +38,12 @@ const projects: Project[] = [
 
 export default function Projects() {
     return (
-        <section className='max-w-350 mx-auto px-6 lg:px-8 mt-25 lg:mt-33'>
-            <div className='flex flex-col items-center text-center lg:items-start lg:text-left gap-1 mb-12'>
-                <h2 className='text-4xl md:text-5xl font-bold leading-tight'>
+        <section className='max-w-350 mx-auto sm:px-6 px-3 lg:px-8 mt-25 lg:mt-33'>
+            <div className='flex flex-col items-center text-center lg:items-start lg:text-left gap-1 sm:mb-12 mb-10'>
+                <h2 className='sm:text-4xl text-2xl md:text-5xl font-bold leading-tight'>
                     <span className='tracking-tight'>Here&apos;s What I&apos;ve Built.</span>
                 </h2>
-                <p className='text-lg text-[#565d6e] font-light max-w-2xl'>A few projects that show how I think about interfaces, structure, and detail.</p>
+                <p className='md:text-lg text-base text-[#565d6e] font-light max-w-2xl'>A few projects that show how I think about interfaces, structure, and detail.</p>
             </div>
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch'>
@@ -51,31 +51,31 @@ export default function Projects() {
                     const isOrphan = index === projects.length - 1 && projects.length % 2 !== 0;
 
                     return (
-                        <div key={project.title} className={`group h-full flex flex-col rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg duration-300 ${isOrphan ? 'md:col-span-2 md:max-w-md md:mx-auto lg:col-span-1 lg:max-w-none lg:mx-0' : ''}`}>
+                        <div key={project.title} className={`group h-full flex flex-col rounded-lg border border-gray-200 overflow-hidden hover:shadow duration-300 ${isOrphan ? 'md:col-span-2 md:max-w-md md:mx-auto lg:col-span-1 lg:max-w-none lg:mx-0' : ''}`}>
                             <div className='relative w-full h-48 overflow-hidden bg-gray-100 shrink-0'>
                                 <Image src={project.image} alt={`${project.title} preview`} fill className='object-cover duration-500' />
                             </div>
 
-                            <div className='flex flex-col flex-1 gap-4 p-5'>
+                            <div className='flex flex-col flex-1 gap-4 sm:p-5 p-3'>
                                 <div>
-                                    <h3 className='text-xl font-medium tracking-tight'>{project.title}</h3>
-                                    <p className='mt-2 text-base text-[#565d6e] font-light leading-relaxed'>{project.description}</p>
+                                    <h3 className='sm:text-xl text-lg font-medium tracking-tight'>{project.title}</h3>
+                                    <p className='mt-2 text-sm sm:text-base text-[#565d6e] font-light leading-relaxed'>{project.description}</p>
                                 </div>
 
-                                <div className='flex flex-wrap gap-2'>
+                                <div className='flex flex-wrap sm:gap-2 gap-1'>
                                     {project.tech.map((item) => (
-                                        <span key={item} className='rounded-md bg-gray-100 px-3 py-1 text-sm text-[#565d6e]'>
+                                        <span key={item} className='rounded-md bg-gray-100 px-3 py-1 text-xs sm:text-sm text-[#565d6e]'>
                                             {item}
                                         </span>
                                     ))}
                                 </div>
 
                                 <div className='flex gap-3 mt-auto pt-2'>
-                                    <a href={project.liveUrl} target='_blank' rel='noopener noreferrer' className='group/live flex-1 flex items-center justify-center gap-1.5 bg-[#7b55ce] hover:bg-[#6942b4] duration-300 rounded-lg px-3 sm:px-4 py-2.5 text-sm sm:text-base font-medium text-white whitespace-nowrap'>
+                                    <a href={project.liveUrl} target='_blank' rel='noopener noreferrer' className='group/live flex-1 flex items-center justify-center gap-1.5 bg-[#7b55ce] hover:bg-[#6942b4] duration-300 rounded-lg px-3 md:px-4 py-1 md:py-2.5 text-sm sm:text-base font-medium text-white whitespace-nowrap'>
                                         Live Demo
                                         <i className='ri-arrow-right-up-line text-base sm:text-lg transition-transform duration-300 group-hover/live:-translate-y-0.5 group-hover/live:translate-x-0.5'></i>
                                     </a>
-                                    <a href={project.githubUrl} target='_blank' rel='noopener noreferrer' className='flex-1 flex items-center justify-center gap-1.5 border border-gray-300 bg-gray-100 hover:bg-white duration-300 rounded-lg px-3 sm:px-4 py-2.5 text-sm sm:text-base font-medium text-gray-700 whitespace-nowrap'>
+                                    <a href={project.githubUrl} target='_blank' rel='noopener noreferrer' className='flex-1 flex items-center justify-center gap-1.5 border border-gray-300 bg-gray-100 hover:bg-white duration-300 rounded-lg px-3 md:px-4 py-1 md:py-2.5 text-sm sm:text-base font-medium text-gray-700 whitespace-nowrap'>
                                         <i className='ri-github-fill text-xl mb-0.5'></i>
                                         GitHub
                                     </a>
