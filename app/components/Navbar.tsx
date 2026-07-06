@@ -1,4 +1,5 @@
 'use client';
+
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -13,34 +14,38 @@ export default function Navbar() {
     ];
 
     return (
-        <div className='w-full border-b border-gray-200 sticky top-0 bg-white z-50'>
-            <div className='flex justify-between w-[95%] md:w-[85%] lg:w-[70%] mx-auto py-2 md:py-3 lg:py-4 items-center'>
-                <Link href='/' className='text-xl md:text-2xl lg:text-3xl font-medium tracking-tighter'>
-                    Farid Hussain
-                </Link>
+        <header className='sticky top-0 z-50 w-full border-b border-gray-200 bg-white'>
+            <nav className='max-w-350 mx-auto px-6 lg:px-8'>
+                <div className='flex items-center justify-between py-3 lg:py-4'>
+                    <Link href='/' className='text-xl md:text-2xl lg:text-3xl font-medium tracking-tighter'>
+                        Farid Hussain
+                    </Link>
 
-                <div className='hidden md:flex gap-3'>
-                    {navLinks.map((link) => (
-                        <Link key={link.href} className='bg-transparent hover:bg-gray-100 md:text-base lg:text-lg tracking-tight rounded py-2 px-3 font-medium text-[#626b77] hover:text-[#4a515c] duration-300 transition-all' href={link.href}>
-                            {link.label}
-                        </Link>
-                    ))}
+                    <div className='hidden md:flex items-center gap-5'>
+                        {navLinks.map((link) => (
+                            <Link key={link.href} href={link.href} className='rounded-md px-3 py-2 text-base lg:text-lg tracking-tight text-[#626b77] transition-colors duration-300 hover:bg-gray-100 hover:text-[#4a515c]'>
+                                {link.label}
+                            </Link>
+                        ))}
+                    </div>
+
+                    <button onClick={() => setIsOpen((prev) => !prev)} className='flex h-10 w-10 items-center justify-center text-2xl md:hidden' aria-label='Toggle menu'>
+                        <i className={isOpen ? 'ri-close-line' : 'ri-menu-3-line'}></i>
+                    </button>
                 </div>
+            </nav>
 
-                <button onClick={() => setIsOpen((prev) => !prev)} className='md:hidden text-2xl w-8 h-8 flex items-center justify-center' aria-label='Toggle menu'>
-                    <i className={isOpen ? 'ri-close-line' : 'ri-menu-3-line'}></i>
-                </button>
-            </div>
-
-            <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out border-t border-gray-200 ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 border-t-0'}`}>
-                <div className='flex flex-col items-center gap-2 py-6'>
-                    {navLinks.map((link) => (
-                        <Link key={link.href} href={link.href} onClick={() => setIsOpen(false)} className='w-[90%] text-center py-3 rounded font-medium text-[#626b77] hover:text-[#4a515c] hover:bg-gray-100 duration-300 transition-all'>
-                            {link.label}
-                        </Link>
-                    ))}
+            <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 border-t border-gray-200' : 'max-h-0'}`}>
+                <div className='max-w-300 mx-auto px-6 py-5'>
+                    <div className='flex flex-col gap-2 items-center'>
+                        {navLinks.map((link) => (
+                            <Link key={link.href} href={link.href} onClick={() => setIsOpen(false)} className='rounded-md px-4 py-3 text-lg font-medium text-[#626b77] transition-colors duration-300 hover:bg-gray-100 hover:text-[#4a515c] w-full text-center'>
+                                {link.label}
+                            </Link>
+                        ))}
+                    </div>
                 </div>
             </div>
-        </div>
+        </header>
     );
 }
