@@ -14,12 +14,21 @@ export default function Navbar() {
     ];
 
     const scrollToSection = (id: string) => {
-        document.getElementById(id)?.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start',
-        });
+        if (isOpen) {
+            setIsOpen(false);
 
-        setIsOpen(false);
+            setTimeout(() => {
+                document.getElementById(id)?.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start',
+                });
+            }, 300);
+        } else {
+            document.getElementById(id)?.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+            });
+        }
     };
 
     return (
