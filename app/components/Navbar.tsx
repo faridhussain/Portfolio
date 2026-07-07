@@ -7,25 +7,41 @@ export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
 
     const navLinks = [
-        { href: '#home', label: 'Home' },
-        { href: '#projects', label: 'Projects' },
-        { href: '#skills', label: 'Skills' },
-        { href: '#contact', label: 'Contact' },
+        { id: 'home', label: 'Home' },
+        { id: 'projects', label: 'Projects' },
+        { id: 'skills', label: 'Skills' },
+        { id: 'contact', label: 'Contact' },
     ];
+
+    const scrollToSection = (id: string) => {
+        document.getElementById(id)?.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+        });
+
+        setIsOpen(false);
+    };
 
     return (
         <header className='sticky top-0 z-50 w-full border-b border-gray-200 bg-white'>
             <nav className='max-w-350 mx-auto px-6 lg:px-8'>
                 <div className='flex items-center justify-between py-3 lg:py-4'>
-                    <Link href='/' className='text-xl md:text-2xl lg:text-3xl font-medium tracking-tighter'>
+                    <Link
+                        href='/'
+                        onClick={(e) => {
+                            e.preventDefault();
+                            scrollToSection('home');
+                        }}
+                        className='text-xl md:text-2xl lg:text-3xl font-medium tracking-tighter'
+                    >
                         Farid Hussain
                     </Link>
 
                     <div className='hidden md:flex items-center gap-5'>
                         {navLinks.map((link) => (
-                            <Link key={link.href} href={link.href} className='rounded-md px-3 py-2 text-base lg:text-lg tracking-tight text-[#626b77] transition-colors duration-300 hover:bg-gray-100 hover:text-[#4a515c]'>
+                            <button key={link.id} onClick={() => scrollToSection(link.id)} className='rounded-md px-3 py-2 text-base lg:text-lg tracking-tight text-[#626b77] transition-colors duration-300 hover:bg-gray-100 hover:text-[#4a515c] cursor-pointer'>
                                 {link.label}
-                            </Link>
+                            </button>
                         ))}
                     </div>
 
@@ -39,9 +55,9 @@ export default function Navbar() {
                 <div className='max-w-300 mx-auto px-6 py-5'>
                     <div className='flex flex-col gap-2 items-center'>
                         {navLinks.map((link) => (
-                            <Link key={link.href} href={link.href} onClick={() => setIsOpen(false)} className='rounded-md px-4 py-3 text-lg font-medium text-[#626b77] transition-colors duration-300 hover:bg-gray-100 hover:text-[#4a515c] w-full text-center'>
+                            <button key={link.id} onClick={() => scrollToSection(link.id)} className='rounded-md px-4 py-3 text-lg font-medium text-[#626b77] transition-colors duration-300 hover:bg-gray-100 hover:text-[#4a515c] w-full text-center cursor-pointer'>
                                 {link.label}
-                            </Link>
+                            </button>
                         ))}
                     </div>
                 </div>

@@ -63,7 +63,7 @@ const skillGroups: SkillGroup[] = [
 
 export default function Skills() {
     return (
-        <section id='skills' className='scroll-mt-24 max-w-350 mx-auto px-4 sm:px-6 lg:px-8 mt-25 lg:mt-33'>
+        <section id='skills' className='scroll-mt-24 max-w-350 mx-auto px-4 sm:px-6 lg:px-8 pb-25 lg:pb-33'>
             <div className='flex flex-col items-center text-center lg:items-start lg:text-left gap-1 mb-12'>
                 <h2 className='sm:text-4xl text-2xl md:text-5xl font-bold leading-tight'>
                     <span className='tracking-tight'>What I Work With.</span>
