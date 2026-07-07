@@ -29,7 +29,7 @@ export default function Hero() {
                 </div>
 
                 <div className='sm:w-70 sm:h-70 h-60 w-60 md:w-100 md:h-100 lg:w-112.5 lg:h-112.5 rounded-full overflow-hidden shrink-0 shadow-lg'>
-                    <Image src='/profile/farid2.png' alt='Farid Hussain' width={450} height={450} className='w-full h-full object-cover' priority />
+                    <Image src='/profile/farid.png' alt='Farid Hussain' width={450} height={450} className='w-full h-full object-cover' priority />
                 </div>
             </div>
         </section>
