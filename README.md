@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Farid's Portfolio
 
-## Getting Started
+## Live Demo
+https://faridhussain-portfolio.vercel.app
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+A modern, responsive developer portfolio built with **Next.js**, **TypeScript**, and **Tailwind CSS** to showcase my projects, skills, and experience as a Frontend Developer.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Modern and clean UI
+- Project showcase with live demo and GitHub links
+- Skills section
+- Contact section with email form
+- Nodemailer integration for contact form
+- Custom toast notifications
+- Form validation with client-side error handling
+- Custom favicon and browser metadata
+- Optimized images using Next.js Image component
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+### Frontend
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Next.js 15
+- React 19
+- TypeScript
+- Tailwind CSS
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Backend
 
-## Deploy on Vercel
+- Next.js Route Handlers
+- Nodemailer
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Other Tools
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Remix Icons
+- Vercel
+
+---
+
+## Sections
+
+- Hero
+- Projects
+- Skills
+- Contact
+
+---
+
+## Contact
+
+If you'd like to connect, collaborate, or discuss a project, feel free to reach out.
+
+- Email: **faridhussain0011@gmail.com**
+- GitHub: **https://github.com/faridhussain**
+- LinkedIn: **https://linkedin.com/in/farid-codes**
+- X: **https://x.com/Farid_HussainX**
