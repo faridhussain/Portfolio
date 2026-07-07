@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Hero() {
     return (
@@ -16,12 +17,14 @@ export default function Hero() {
                     </p>
 
                     <div className='flex flex-col sm:flex-row w-full sm:w-auto gap-4 mt-2'>
-                        <button className='w-full sm:w-auto border border-gray-300 bg-gray-100 hover:bg-white duration-300 rounded-lg md:px-5 md:py-3 py-2 px-4 text-base md:text-lg font-medium flex items-center justify-center gap-2 text-gray-700 cursor-pointer'>
+                        <Link href='#projects' className='w-full sm:w-auto border border-gray-300 bg-gray-100 hover:bg-white duration-300 rounded-lg md:px-5 md:py-3 py-2 px-4 text-base md:text-lg font-medium flex items-center justify-center gap-2 text-gray-700 cursor-pointer'>
                             <i className='ri-arrow-down-line'></i>
                             Know more
-                        </button>
+                        </Link>
 
-                        <button className='w-full sm:w-auto bg-[#7b55ce] hover:bg-[#6942b4] duration-300 rounded-lg md:px-5 md:py-3 py-2 px-4 text-base md:text-lg font-medium text-white cursor-pointer'>Get in touch</button>
+                        <Link href='#contact' className='w-full sm:w-auto bg-[#7b55ce] hover:bg-[#6942b4] duration-300 rounded-lg md:px-5 md:py-3 py-2 px-4 text-base md:text-lg font-medium text-white cursor-pointer'>
+                            Get in touch
+                        </Link>
                     </div>
                 </div>
 
