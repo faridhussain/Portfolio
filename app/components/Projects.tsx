@@ -38,7 +38,7 @@ const projects: Project[] = [
 
 export default function Projects() {
     return (
-        <section className='max-w-350 mx-auto sm:px-6 px-3 lg:px-8 mt-25 lg:mt-33'>
+        <section id='projects' className='scroll-mt-24 max-w-350 mx-auto sm:px-6 px-3 lg:px-8 mt-25 lg:mt-33'>
             <div className='flex flex-col items-center text-center lg:items-start lg:text-left gap-1 sm:mb-12 mb-10'>
                 <h2 className='sm:text-4xl text-2xl md:text-5xl font-bold leading-tight'>
                     <span className='tracking-tight'>Here&apos;s What I&apos;ve Built.</span>

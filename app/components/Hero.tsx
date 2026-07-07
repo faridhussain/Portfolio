@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function Hero() {
     return (
-        <section className='max-w-350 mx-auto px-6 lg:px-8 mt-5 sm:mt-20 lg:mt-28'>
+        <section id='home' className='scroll-mt-24 max-w-350 mx-auto px-6 lg:px-8 mt-5 sm:mt-20 lg:mt-28'>
             <div className='flex flex-col-reverse lg:flex-row items-center lg:items-start justify-between gap-10 sm:gap-14 md:gap-15'>
                 <div className='flex-1 flex flex-col gap-7 items-center text-center lg:items-start lg:text-left'>
                     <h1 className='sm:text-4xl text-2xl md:text-5xl lg:text-6xl font-bold leading-tight flex flex-col'>
