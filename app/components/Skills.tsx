@@ -85,25 +85,7 @@ export default function Skills() {
 
                             <motion.div variants={containerVariants} className='grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3 lg:gap-5'>
                                 {group.skills.map((skill) => (
-                                    <motion.a
-                                        key={skill.name}
-                                        variants={itemVariants}
-                                        whileHover={{
-                                            y: -5,
-                                            transition: {
-                                                type: 'spring',
-                                                stiffness: 450,
-                                                damping: 30,
-                                            },
-                                        }}
-                                        whileTap={{
-                                            scale: 0.98,
-                                        }}
-                                        href={skill.url}
-                                        target='_blank'
-                                        rel='noopener noreferrer'
-                                        className='group flex flex-col gap-2 rounded-lg border border-[#F3F4F7] bg-gray-50 p-3 md:p-5 transition-shadow duration-300 hover:shadow-md'
-                                    >
+                                    <motion.a key={skill.name} variants={itemVariants} href={skill.url} target='_blank' rel='noopener noreferrer' className='group flex flex-col gap-2 rounded-lg border border-[#F3F4F7] bg-gray-50 p-3 md:p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-md'>
                                         <div className='flex items-center justify-between'>
                                             <h4 className='text-sm md:text-lg font-medium tracking-tight'>{skill.name}</h4>
 

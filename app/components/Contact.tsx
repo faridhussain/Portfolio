@@ -194,25 +194,7 @@ export default function Contact() {
                 <div className='w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch'>
                     <motion.div variants={containerVariants} className='w-full flex flex-col gap-5'>
                         {contactMethods.map((method) => (
-                            <motion.a
-                                key={method.label}
-                                variants={itemVariants}
-                                whileHover={{
-                                    y: -3,
-                                    transition: {
-                                        type: 'spring',
-                                        stiffness: 450,
-                                        damping: 30,
-                                    },
-                                }}
-                                whileTap={{
-                                    scale: 0.99,
-                                }}
-                                href={method.href}
-                                target={method.external ? '_blank' : undefined}
-                                rel={method.external ? 'noopener noreferrer' : undefined}
-                                className='group w-full flex items-center gap-4 rounded-lg border border-[#F3F4F7] bg-gray-50 md:p-5 p-2 hover:shadow-md transition-shadow duration-300'
-                            >
+                            <motion.a key={method.label} variants={itemVariants} href={method.href} target={method.external ? '_blank' : undefined} rel={method.external ? 'noopener noreferrer' : undefined} className='group w-full flex items-center gap-4 rounded-lg border border-[#F3F4F7] bg-gray-50 md:p-5 p-2 transition-all duration-300 hover:-translate-y-1 hover:shadow-md'>
                                 <div className='shrink-0 flex items-center justify-center h-7 w-7 md:w-11 md:h-11 rounded-lg bg-white border border-gray-200 text-[#7b55ce] text-base sm:text-xl'>
                                     <i className={method.icon}></i>
                                 </div>

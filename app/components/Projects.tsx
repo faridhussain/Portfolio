@@ -57,22 +57,7 @@ export default function Projects() {
                         const isOrphan = index === projects.length - 1 && projects.length % 2 !== 0
 
                         return (
-                            <motion.div
-                                key={project.title}
-                                variants={itemVariants}
-                                whileHover={{
-                                    y: -3,
-                                    transition: {
-                                        type: 'spring',
-                                        stiffness: 450,
-                                        damping: 30,
-                                    },
-                                }}
-                                whileTap={{
-                                    scale: 0.99,
-                                }}
-                                className={`group h-full flex flex-col rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-300 ${isOrphan ? 'md:col-span-2 md:max-w-md md:mx-auto lg:col-span-1 lg:max-w-none lg:mx-0' : ''}`}
-                            >
+                            <motion.div key={project.title} variants={itemVariants} className={`group h-full flex flex-col rounded-lg border border-gray-200 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${isOrphan ? 'md:col-span-2 md:max-w-md md:mx-auto lg:col-span-1 lg:max-w-none lg:mx-0' : ''}`}>
                                 <div className='relative w-full aspect-16/10 lg:aspect-video overflow-hidden bg-gray-100 shrink-0'>
                                     <Image src={project.image} alt={`${project.title} preview`} fill sizes='(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw' className='object-cover transition-transform duration-500 group-hover:scale-105' />
                                 </div>
