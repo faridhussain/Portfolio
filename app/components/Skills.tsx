@@ -1,13 +1,17 @@
+'use client'
+
+import { motion, type Variants } from 'framer-motion'
+
 type Skill = {
-    name: string;
-    description: string;
-    url: string;
-};
+    name: string
+    description: string
+    url: string
+}
 
 type SkillGroup = {
-    label?: string;
-    skills: Skill[];
-};
+    label?: string
+    skills: Skill[]
+}
 
 const skillGroups: SkillGroup[] = [
     {
@@ -59,38 +63,78 @@ const skillGroups: SkillGroup[] = [
             },
         ],
     },
-];
+]
+
+const containerVariants: Variants = {
+    hidden: {},
+    visible: {
+        transition: {
+            staggerChildren: 0.08,
+        },
+    },
+}
+
+const itemVariants: Variants = {
+    hidden: {
+        opacity: 0,
+        y: 20,
+    },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: 0.6,
+        },
+    },
+}
 
 export default function Skills() {
     return (
         <section id='skills' className='scroll-mt-24 max-w-350 mx-auto px-4 sm:px-6 lg:px-8 pb-25 lg:pb-33'>
-            <div className='flex flex-col items-center text-center lg:items-start lg:text-left gap-1 mb-12'>
-                <h2 className='sm:text-4xl text-2xl md:text-5xl font-bold leading-tight'>
-                    <span className='tracking-tight'>What I Work With.</span>
-                </h2>
-                <p className='md:text-lg text-base text-[#565d6e] font-light max-w-2xl'>Technologies I use to design, build, and ship projects.</p>
-            </div>
+            <motion.div initial='hidden' whileInView='visible' viewport={{ once: true, amount: 0.2 }} variants={containerVariants}>
+                <motion.div variants={itemVariants} className='flex flex-col items-center text-center lg:items-start lg:text-left gap-1 mb-12'>
+                    <h2 className='sm:text-4xl text-2xl md:text-5xl font-bold leading-tight'>
+                        <span className='tracking-tight'>What I Work With.</span>
+                    </h2>
 
-            <div className='flex flex-col gap-10'>
-                {skillGroups.map((group, index) => (
-                    <div key={group.label ?? index} className='flex flex-col gap-4'>
-                        {group.label && <h3 className='text-xl md:text-2xl font-bold tracking-tight'>{group.label}</h3>}
+                    <p className='md:text-lg text-base text-[#565d6e] font-light max-w-2xl'>Technologies I use to design, build, and ship projects.</p>
+                </motion.div>
 
-                        <div className='grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3 lg:gap-5'>
-                            {group.skills.map((skill) => (
-                                <a key={skill.name} href={skill.url} target='_blank' rel='noopener noreferrer' className='group flex flex-col gap-2 rounded-lg border border-[#F3F4F7] bg-gray-50 p-3 md:p-5'>
-                                    <div className='flex items-center justify-between'>
-                                        <h4 className='text-sm md:text-lg font-medium tracking-tight'>{skill.name}</h4>
-                                        <i className='ri-arrow-right-up-line text-sm sm:text-lg text-gray-400 transition-all duration-300 group-hover:text-[#7b55ce] group-hover:-translate-y-1 group-hover:translate-x-1'></i>
-                                    </div>
+                <div className='flex flex-col gap-10'>
+                    {skillGroups.map((group, index) => (
+                        <div key={group.label ?? index} className='flex flex-col gap-4'>
+                            {group.label && <h3 className='text-xl md:text-2xl font-bold tracking-tight'>{group.label}</h3>}
 
-                                    <p className='text-xs md:text-base text-[#565d6e] font-light leading-relaxed'>{skill.description}</p>
-                                </a>
-                            ))}
+                            <motion.div variants={containerVariants} className='grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3 lg:gap-5'>
+                                {group.skills.map((skill) => (
+                                    <motion.a
+                                        key={skill.name}
+                                        variants={itemVariants}
+                                        whileHover={{
+                                            y: -5,
+                                        }}
+                                        transition={{
+                                            duration: 0.25,
+                                        }}
+                                        href={skill.url}
+                                        target='_blank'
+                                        rel='noopener noreferrer'
+                                        className='group flex flex-col gap-2 rounded-lg border border-[#F3F4F7] bg-gray-50 p-3 md:p-5 hover:shadow-md transition-shadow duration-300'
+                                    >
+                                        <div className='flex items-center justify-between'>
+                                            <h4 className='text-sm md:text-lg font-medium tracking-tight'>{skill.name}</h4>
+
+                                            <i className='ri-arrow-right-up-line text-sm sm:text-lg text-gray-400 transition-all duration-300 group-hover:text-[#7b55ce] group-hover:-translate-y-1 group-hover:translate-x-1'></i>
+                                        </div>
+
+                                        <p className='text-xs md:text-base text-[#565d6e] font-light leading-relaxed'>{skill.description}</p>
+                                    </motion.a>
+                                ))}
+                            </motion.div>
                         </div>
-                    </div>
-                ))}
-            </div>
+                    ))}
+                </div>
+            </motion.div>
         </section>
-    );
+    )
 }
