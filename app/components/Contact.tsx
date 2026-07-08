@@ -197,8 +197,17 @@ export default function Contact() {
                             <motion.a
                                 key={method.label}
                                 variants={itemVariants}
-                                whileHover={{ y: -4 }}
-                                transition={{ duration: 0.25 }}
+                                whileHover={{
+                                    y: -3,
+                                    transition: {
+                                        type: 'spring',
+                                        stiffness: 450,
+                                        damping: 30,
+                                    },
+                                }}
+                                whileTap={{
+                                    scale: 0.99,
+                                }}
                                 href={method.href}
                                 target={method.external ? '_blank' : undefined}
                                 rel={method.external ? 'noopener noreferrer' : undefined}
