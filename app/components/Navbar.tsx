@@ -1,35 +1,40 @@
-'use client';
+'use client'
 
-import Link from 'next/link';
-import { useState } from 'react';
+import Link from 'next/link'
+import { useState } from 'react'
+import { getLenis } from '../lib/lenis'
 
 export default function Navbar() {
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false)
 
     const navLinks = [
         { id: 'home', label: 'Home' },
         { id: 'projects', label: 'Projects' },
         { id: 'skills', label: 'Skills' },
         { id: 'contact', label: 'Contact' },
-    ];
+    ]
 
     const scrollToSection = (id: string) => {
-        if (isOpen) {
-            setIsOpen(false);
+        const scroll = () => {
+            const lenis = getLenis()
 
-            setTimeout(() => {
+            if (lenis) {
+                lenis.scrollTo(`#${id}`)
+            } else {
                 document.getElementById(id)?.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start',
-                });
-            }, 300);
-        } else {
-            document.getElementById(id)?.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start',
-            });
+                })
+            }
         }
-    };
+
+        if (isOpen) {
+            setIsOpen(false)
+            setTimeout(scroll, 300)
+        } else {
+            scroll()
+        }
+    }
 
     return (
         <header className='sticky top-0 z-50 w-full border-b border-gray-200 bg-white'>
@@ -38,8 +43,8 @@ export default function Navbar() {
                     <Link
                         href='/'
                         onClick={(e) => {
-                            e.preventDefault();
-                            scrollToSection('home');
+                            e.preventDefault()
+                            scrollToSection('home')
                         }}
                         className='text-xl md:text-2xl lg:text-3xl font-medium tracking-tighter'
                     >
@@ -72,5 +77,5 @@ export default function Navbar() {
                 </div>
             </div>
         </header>
-    );
+    )
 }
