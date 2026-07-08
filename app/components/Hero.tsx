@@ -29,7 +29,7 @@ const itemVariants: Variants = {
 
 export default function Hero() {
     return (
-        <section id='home' className='scroll-mt-24 max-w-350 mx-auto px-6 lg:px-8 mt-5 sm:mt-20 lg:mt-28 pb-16 lg:pb-24'>
+        <section id='home' className='scroll-mt-24 max-w-350 mx-auto px-6 lg:px-8 mt-5 sm:mt-20 lg:mt-28 pb-16 lg:pb-23'>
             <div className='flex flex-col-reverse lg:flex-row items-center lg:items-start justify-between gap-10 sm:gap-10 md:gap-1'>
                 <motion.div variants={containerVariants} initial='hidden' animate='visible' className='flex-1 flex flex-col gap-5 items-center text-center lg:items-start lg:text-left'>
                     <motion.h1 variants={itemVariants} className='sm:text-4xl text-2xl md:text-5xl lg:text-6xl font-bold leading-tight flex flex-col'>
@@ -41,14 +41,11 @@ export default function Hero() {
                         I build responsive, high-performance web applications using React, Next.js, and TypeScript with a focus on clean design, maintainable code, and intuitive user experiences.
                     </motion.p>
 
-                    <motion.div variants={itemVariants} className='shine-badge inline-flex items-center gap-2.5 rounded-full border border-[#7b55ce]/15 bg-[#7b55ce]/5 px-4 py-2'>
+                    <motion.div variants={itemVariants} className='shine-badge inline-flex items-center gap-2.5 rounded-full border border-[#7b55ce]/15 bg-[#7b55ce]/5 px-2 py-1 sm:px-4 sm:py-2'>
                         <span className='relative inline-flex h-2 w-2 rounded-full bg-[#7b55ce]'></span>
-
-                        <span className='text-sm'>
+                        <span className='text-[11px] sm:text-sm'>
                             <span className='font-medium text-[#7b55ce]'>Currently Learning</span>
-
                             <span className='text-gray-400'> • </span>
-
                             <span className='text-gray-600'>Node.js • Express.js • MongoDB</span>
                         </span>
                     </motion.div>
