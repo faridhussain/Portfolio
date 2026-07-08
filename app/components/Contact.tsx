@@ -1,6 +1,7 @@
 'use client'
 
-import { motion, type Variants } from 'framer-motion'
+import { motion } from 'framer-motion'
+import { containerVariants, itemVariants } from '../lib/motion'
 import { useState } from 'react'
 import { useToast } from '../providers/ToastProvider'
 
@@ -42,29 +43,6 @@ const contactMethods: ContactMethod[] = [
         external: true,
     },
 ]
-
-const containerVariants: Variants = {
-    hidden: {},
-    visible: {
-        transition: {
-            staggerChildren: 0.1,
-        },
-    },
-}
-
-const itemVariants: Variants = {
-    hidden: {
-        opacity: 0,
-        y: 20,
-    },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: {
-            duration: 0.6,
-        },
-    },
-}
 
 const nameRegex = /^[A-Za-z]+(?: [A-Za-z]+)*$/
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/

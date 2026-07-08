@@ -2,30 +2,8 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion, type Variants } from 'framer-motion'
-
-const containerVariants: Variants = {
-    hidden: {},
-    visible: {
-        transition: {
-            staggerChildren: 0.12,
-        },
-    },
-}
-
-const itemVariants: Variants = {
-    hidden: {
-        opacity: 0,
-        y: 20,
-    },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: {
-            duration: 0.6,
-        },
-    },
-}
+import { motion } from 'framer-motion'
+import { containerVariants, itemVariants } from '../lib/motion'
 
 export default function Hero() {
     return (

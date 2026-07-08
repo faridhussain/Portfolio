@@ -1,7 +1,8 @@
 'use client'
 
 import Image from 'next/image'
-import { motion, type Variants } from 'framer-motion'
+import { motion } from 'framer-motion'
+import { containerVariants, itemVariants } from '../lib/motion'
 
 type Project = {
     title: string
@@ -38,29 +39,6 @@ const projects: Project[] = [
         githubUrl: 'https://github.com/faridhussain/Image-Editor',
     },
 ]
-
-const containerVariants: Variants = {
-    hidden: {},
-    visible: {
-        transition: {
-            staggerChildren: 0.15,
-        },
-    },
-}
-
-const itemVariants: Variants = {
-    hidden: {
-        opacity: 0,
-        y: 20,
-    },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: {
-            duration: 0.6,
-        },
-    },
-}
 
 export default function Projects() {
     return (
