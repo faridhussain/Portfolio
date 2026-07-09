@@ -45,11 +45,11 @@ export default function Projects() {
         <section id='projects' className='scroll-mt-24 max-w-350 mx-auto px-3 sm:px-6 lg:px-8 pb-25 lg:pb-33'>
             <motion.div initial='hidden' whileInView='visible' viewport={{ once: true, amount: 0.2 }} variants={containerVariants}>
                 <motion.div variants={itemVariants} className='flex flex-col items-center text-center lg:items-start lg:text-left gap-1 sm:mb-12 mb-10'>
-                    <h2 className='sm:text-4xl text-2xl md:text-5xl font-bold leading-tight'>
+                    <h2 className='sm:text-4xl text-2xl md:text-5xl font-bold leading-tight text-gray-900 dark:text-white transition-colors duration-300'>
                         <span className='tracking-tight'>Here&apos;s What I&apos;ve Built.</span>
                     </h2>
 
-                    <p className='md:text-lg text-base text-[#565d6e] font-light max-w-2xl'>A few projects that show how I think about interfaces, structure, and detail.</p>
+                    <p className='md:text-lg text-base text-[#565d6e] dark:text-gray-400 font-light max-w-2xl transition-colors duration-300'>A few projects that show how I think about interfaces, structure, and detail.</p>
                 </motion.div>
 
                 <motion.div variants={containerVariants} className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch'>
@@ -57,21 +57,25 @@ export default function Projects() {
                         const isOrphan = index === projects.length - 1 && projects.length % 2 !== 0
 
                         return (
-                            <motion.div key={project.title} variants={itemVariants} className={`group h-full flex flex-col rounded-lg border border-gray-200 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${isOrphan ? 'md:col-span-2 md:max-w-md md:mx-auto lg:col-span-1 lg:max-w-none lg:mx-0' : ''}`}>
-                                <div className='relative w-full aspect-16/10 lg:aspect-video overflow-hidden bg-gray-100 shrink-0'>
-                                    <Image src={project.image} alt={`${project.title} preview`} fill sizes='(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw' className='object-cover transition-transform duration-500 group-hover:scale-105' />
+                            <motion.div
+                                key={project.title}
+                                variants={itemVariants}
+                                className={`group h-full flex flex-col rounded-lg border border-gray-200 dark:border-[#23262d] bg-white dark:bg-[#17191F] overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:hover:shadow-black/30 ${isOrphan ? 'md:col-span-2 md:max-w-md md:mx-auto lg:col-span-1 lg:max-w-none lg:mx-0' : ''}`}
+                            >
+                                <div className='relative w-full aspect-16/10 lg:aspect-video overflow-hidden bg-gray-100 dark:bg-[#0F1115] shrink-0'>
+                                    <Image src={project.image} priority={index === 0} alt={`${project.title} preview`} fill sizes='(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw' className='object-cover transition-transform duration-500 group-hover:scale-105' />
                                 </div>
 
                                 <div className='flex flex-col flex-1 gap-4 sm:p-5 p-3'>
                                     <div>
-                                        <h3 className='sm:text-xl text-lg font-medium tracking-tight'>{project.title}</h3>
+                                        <h3 className='sm:text-xl text-lg font-medium tracking-tight text-gray-900 dark:text-white transition-colors duration-300'>{project.title}</h3>
 
-                                        <p className='mt-2 text-sm sm:text-base text-[#565d6e] font-light leading-relaxed'>{project.description}</p>
+                                        <p className='mt-2 text-sm sm:text-base text-[#565d6e] dark:text-gray-400 font-light leading-relaxed transition-colors duration-300'>{project.description}</p>
                                     </div>
 
                                     <div className='flex flex-wrap sm:gap-2 gap-1'>
                                         {project.tech.map((item) => (
-                                            <span key={item} className='rounded-md bg-gray-100 px-3 py-1 text-xs sm:text-sm text-[#565d6e]'>
+                                            <span key={item} className='rounded-md bg-gray-100 dark:bg-[#22252C] px-3 py-1 text-xs sm:text-sm text-[#565d6e] dark:text-gray-300 transition-colors duration-300'>
                                                 {item}
                                             </span>
                                         ))}
@@ -83,7 +87,12 @@ export default function Projects() {
                                             <i className='ri-arrow-right-up-line text-base sm:text-lg transition-transform duration-300 group-hover/live:-translate-y-0.5 group-hover/live:translate-x-0.5'></i>
                                         </a>
 
-                                        <a href={project.githubUrl} target='_blank' rel='noopener noreferrer' className='flex-1 flex items-center justify-center gap-1.5 border border-gray-300 bg-gray-100 hover:bg-white duration-300 rounded-lg px-3 md:px-4 py-1 md:py-2.5 text-sm sm:text-base font-medium text-gray-700 whitespace-nowrap'>
+                                        <a
+                                            href={project.githubUrl}
+                                            target='_blank'
+                                            rel='noopener noreferrer'
+                                            className='flex-1 flex items-center justify-center gap-1.5 border border-gray-300 dark:border-[#2A2D35] bg-gray-100 dark:bg-[#22252C] hover:bg-white dark:hover:bg-[#2B2E36] transition-all duration-300 rounded-lg px-3 md:px-4 py-1 md:py-2.5 text-sm sm:text-base font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap'
+                                        >
                                             <i className='ri-github-fill text-xl mb-0.5'></i>
                                             GitHub
                                         </a>

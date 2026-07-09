@@ -184,25 +184,32 @@ export default function Contact() {
         <section id='contact' className='scroll-mt-24 w-full max-w-350 mx-auto px-4 sm:px-6 lg:px-8 mb-3'>
             <motion.div initial='hidden' whileInView='visible' viewport={{ once: true, amount: 0.2 }} variants={containerVariants}>
                 <motion.div variants={itemVariants} className='flex flex-col items-center text-center lg:items-start lg:text-left gap-1 mb-12'>
-                    <h2 className='sm:text-4xl text-2xl md:text-5xl font-bold leading-tight'>
+                    <h2 className='sm:text-4xl text-2xl md:text-5xl font-bold leading-tight text-gray-900 dark:text-white transition-colors duration-300'>
                         <span className='tracking-tight'>Let&apos;s Build Something.</span>
                     </h2>
 
-                    <p className='md:text-lg text-base text-[#565d6e] font-light max-w-2xl'>Have a project in mind or just want to say hi? I&apos;d love to hear from you.</p>
+                    <p className='md:text-lg text-base text-[#565d6e] dark:text-gray-400 font-light max-w-2xl transition-colors duration-300'>Have a project in mind or just want to say hi? I&apos;d love to hear from you.</p>
                 </motion.div>
 
                 <div className='w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch'>
                     <motion.div variants={containerVariants} className='w-full flex flex-col gap-5'>
                         {contactMethods.map((method) => (
-                            <motion.a key={method.label} variants={itemVariants} href={method.href} target={method.external ? '_blank' : undefined} rel={method.external ? 'noopener noreferrer' : undefined} className='group w-full flex items-center gap-4 rounded-lg border border-[#F3F4F7] bg-gray-50 md:p-5 p-2 transition-all duration-300 hover:-translate-y-1 hover:shadow-md'>
-                                <div className='shrink-0 flex items-center justify-center h-7 w-7 md:w-11 md:h-11 rounded-lg bg-white border border-gray-200 text-[#7b55ce] text-base sm:text-xl'>
+                            <motion.a
+                                key={method.label}
+                                variants={itemVariants}
+                                href={method.href}
+                                target={method.external ? '_blank' : undefined}
+                                rel={method.external ? 'noopener noreferrer' : undefined}
+                                className='group w-full flex items-center gap-4 rounded-lg border border-[#F3F4F7] dark:border-[#23262D] bg-gray-50 dark:bg-[#17191F] md:p-5 p-2 transition-all duration-300 hover:-translate-y-1 hover:shadow-md dark:hover:shadow-black/30'
+                            >
+                                <div className='shrink-0 flex items-center justify-center h-7 w-7 md:w-11 md:h-11 rounded-lg bg-white dark:bg-[#22252C] border border-gray-200 dark:border-[#2A2D35] text-[#7b55ce] text-base sm:text-xl transition-colors duration-300'>
                                     <i className={method.icon}></i>
                                 </div>
 
                                 <div className='flex flex-col'>
-                                    <span className='text-xs md:text-sm text-[#565d6e] font-light'>{method.label}</span>
+                                    <span className='text-xs md:text-sm text-[#565d6e] dark:text-gray-400 font-light transition-colors duration-300'>{method.label}</span>
 
-                                    <span className='text-sm sm:text-lg font-medium tracking-tight'>{method.value}</span>
+                                    <span className='text-sm sm:text-lg font-medium tracking-tight text-gray-900 dark:text-white transition-colors duration-300'>{method.value}</span>
                                 </div>
 
                                 <i className='ri-arrow-right-up-line md:text-lg text-gray-400 ml-auto transition-all duration-300 group-hover:text-[#7b55ce] group-hover:-translate-y-1 group-hover:translate-x-1'></i>
@@ -210,9 +217,9 @@ export default function Contact() {
                         ))}
                     </motion.div>
 
-                    <motion.form variants={itemVariants} noValidate onSubmit={handleSubmit} className='w-full flex flex-col gap-4 rounded-lg border border-gray-200 p-2 sm:p-5'>
+                    <motion.form variants={itemVariants} noValidate onSubmit={handleSubmit} className='w-full flex flex-col gap-4 rounded-lg border border-gray-200 dark:border-[#23262D] bg-white dark:bg-[#17191F] p-2 sm:p-5 transition-colors duration-300'>
                         <div className='flex flex-col gap-1.5'>
-                            <label htmlFor='name' className='text-sm text-[#565d6e] font-light'>
+                            <label htmlFor='name' className='text-sm text-[#565d6e] dark:text-gray-400 font-light transition-colors duration-300'>
                                 Name
                             </label>
 
@@ -227,14 +234,14 @@ export default function Contact() {
                                 maxLength={30}
                                 autoComplete='name'
                                 placeholder='Your name'
-                                className={`w-full rounded-lg border px-3 sm:px-4 sm:py-2.5 py-1.5 text-sm sm:text-base outline-none duration-300 bg-gray-50 focus:bg-white ${errors.name ? 'border-red-500 focus:border-red-500' : 'border-gray-300 focus:border-[#7b55ce]'}`}
+                                className={`w-full rounded-lg border px-3 sm:px-4 sm:py-2.5 py-1.5 text-sm sm:text-base outline-none duration-300 bg-gray-50 dark:bg-[#22252C] text-gray-900 dark:text-white focus:bg-white dark:focus:bg-[#2B2E36] placeholder:text-gray-400 ${errors.name ? 'border-red-500 focus:border-red-500' : 'border-gray-300 dark:border-[#2A2D35] focus:border-[#7b55ce]'}`}
                             />
 
                             {errors.name && <p className='text-sm text-red-500'>{errors.name}</p>}
                         </div>
 
                         <div className='flex flex-col gap-1.5'>
-                            <label htmlFor='email' className='text-sm text-[#565d6e] font-light'>
+                            <label htmlFor='email' className='text-sm text-[#565d6e] dark:text-gray-400 font-light transition-colors duration-300'>
                                 Email
                             </label>
 
@@ -247,14 +254,14 @@ export default function Contact() {
                                 required
                                 autoComplete='email'
                                 placeholder='you@example.com'
-                                className={`w-full rounded-lg border px-3 sm:px-4 sm:py-2.5 py-1.5 text-sm sm:text-base outline-none duration-300 bg-gray-50 focus:bg-white ${errors.email ? 'border-red-500 focus:border-red-500' : 'border-gray-300 focus:border-[#7b55ce]'}`}
+                                className={`w-full rounded-lg border px-3 sm:px-4 sm:py-2.5 py-1.5 text-sm sm:text-base outline-none duration-300 bg-gray-50 dark:bg-[#22252C] text-gray-900 dark:text-white focus:bg-white dark:focus:bg-[#2B2E36] placeholder:text-gray-400 ${errors.name ? 'border-red-500 focus:border-red-500' : 'border-gray-300 dark:border-[#2A2D35] focus:border-[#7b55ce]'}`}
                             />
 
                             {errors.email && <p className='text-sm text-red-500'>{errors.email}</p>}
                         </div>
 
                         <div className='flex flex-col gap-1.5'>
-                            <label htmlFor='message' className='text-sm text-[#565d6e] font-light'>
+                            <label htmlFor='message' className='text-sm text-[#565d6e] dark:text-gray-400 font-light transition-colors duration-300'>
                                 Message
                             </label>
 
@@ -268,7 +275,7 @@ export default function Contact() {
                                 minLength={10}
                                 maxLength={1000}
                                 placeholder='Tell me about your project...'
-                                className={`w-full resize-none rounded-lg border px-3 sm:px-4 sm:py-2.5 py-1.5 text-sm sm:text-base outline-none duration-300 bg-gray-50 focus:bg-white ${errors.message ? 'border-red-500 focus:border-red-500' : 'border-gray-300 focus:border-[#7b55ce]'}`}
+                                className={`w-full rounded-lg border px-3 sm:px-4 sm:py-2.5 py-1.5 text-sm sm:text-base outline-none duration-300 bg-gray-50 dark:bg-[#22252C] text-gray-900 dark:text-white focus:bg-white dark:focus:bg-[#2B2E36] placeholder:text-gray-400 ${errors.name ? 'border-red-500 focus:border-red-500' : 'border-gray-300 dark:border-[#2A2D35] focus:border-[#7b55ce]'}`}
                             />
 
                             {errors.message && <p className='text-sm text-red-500'>{errors.message}</p>}

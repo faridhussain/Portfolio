@@ -1,5 +1,7 @@
 @import 'tailwindcss';
 
+@custom-variant dark (&:is(.dark *));
+
 .shine-badge {
     position: relative;
     overflow: hidden;

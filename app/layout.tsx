@@ -4,6 +4,7 @@ import 'remixicon/fonts/remixicon.css'
 import './globals.css'
 import { ToastProvider } from './providers/ToastProvider'
 import LenisProvider from './components/LenisProvider'
+import ThemeProvider from './components/ThemeProvider'
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -28,9 +29,11 @@ export default function RootLayout({
     return (
         <html lang='en' className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
             <body className={`${geistSans.className} min-h-full flex flex-col`}>
-                <ToastProvider>
-                    <LenisProvider>{children}</LenisProvider>
-                </ToastProvider>
+                <ThemeProvider>
+                    <ToastProvider>
+                        <LenisProvider>{children}</LenisProvider>
+                    </ToastProvider>
+                </ThemeProvider>
             </body>
         </html>
     )
