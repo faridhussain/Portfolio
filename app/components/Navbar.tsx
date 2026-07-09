@@ -83,7 +83,7 @@ export default function Navbar() {
             <div
                 className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out bg-white dark:bg-[#0F1115] ${
                     isOpen
-                        ? 'max-h-96 border-t border-gray-200 dark:border-[#23262d]'
+                        ? 'max-h-96 border-t border-gray-100 dark:border-[#23262d]'
                         : 'max-h-0'
                 }`}
             >
