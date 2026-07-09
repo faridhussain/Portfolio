@@ -41,8 +41,8 @@ export default function Navbar() {
 
     return (
         <header className='sticky top-0 z-50 w-full border-b border-gray-200 dark:border-[#23262d] bg-white dark:bg-[#0F1115] transition-colors duration-300'>
-            <nav className='max-w-350 mx-auto px-6 lg:px-8'>
-                <div className='flex items-center justify-between py-3 lg:py-4'>
+            <nav className='max-w-350 mx-auto px-4 sm:px-6 lg:px-8'>
+                <div className='flex items-center justify-between py-2 lg:py-4'>
                     <Link
                         href='/'
                         onClick={(e) => {
@@ -67,7 +67,7 @@ export default function Navbar() {
                     <div className='flex items-center gap-2 md:hidden'>
                         <ThemeToggle />
 
-                        <button onClick={() => setIsOpen((prev) => !prev)} className='flex h-10 w-10 items-center justify-center text-2xl text-gray-900 dark:text-white transition-colors duration-300' aria-label='Toggle menu'>
+                        <button onClick={() => setIsOpen((prev) => !prev)} className='flex h-10 w-10 items-center justify-center text-lg sm:text-2xl text-gray-900 dark:text-white transition-colors duration-300' aria-label='Toggle menu'>
                             <i className={isOpen ? 'ri-close-line' : 'ri-menu-3-line'}></i>
                         </button>
                     </div>

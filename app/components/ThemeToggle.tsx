@@ -29,7 +29,7 @@ export default function ThemeToggle() {
             }}
             onClick={() => setTheme(isDark ? 'light' : 'dark')}
             aria-label='Toggle theme'
-            className='flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 dark:border-[#2A2D35] bg-white dark:bg-[#17191F] text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-[#22252C] transition-all duration-300 cursor-pointer'
+            className='flex h-7 w-7 items-center justify-center rounded-full border border-gray-200 dark:border-[#2A2D35] bg-white dark:bg-[#17191F] text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-[#22252C] transition-all duration-300 cursor-pointer'
         >
             <motion.div
                 animate={{

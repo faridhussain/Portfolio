@@ -21,12 +21,12 @@ const scrollToContact = () => {
 
 export default function Hero() {
     return (
-        <section id='home' className='scroll-mt-24 max-w-350 mx-auto px-6 lg:px-8 mt-5 sm:mt-20 lg:mt-28 pb-16 lg:pb-23'>
+        <section id='home' className='scroll-mt-24 max-w-350 mx-auto px-6 lg:px-8 mt-10 sm:mt-20 lg:mt-28 pb-16 lg:pb-23'>
             <div className='flex flex-col-reverse lg:flex-row items-center lg:items-start justify-between gap-10 sm:gap-10 md:gap-1'>
                 <motion.div variants={containerVariants} initial='hidden' animate='visible' className='flex-1 flex flex-col gap-5 items-center text-center lg:items-start lg:text-left'>
                     <motion.h1 variants={itemVariants} className='sm:text-4xl text-2xl md:text-5xl lg:text-6xl font-bold leading-tight flex flex-col text-gray-900 dark:text-white transition-colors duration-300'>
-                        <span className='text-[#7b55ce] mb-1'>Trust Me,</span>
-                        <span className='tracking-tight leading-14'>I&apos;m a Frontend Developer.</span>
+                        <span className='text-[#7b55ce] sm:mb-1'>Trust Me,</span>
+                        <span className='tracking-tight leading-8 sm:leading-14'>I&apos;m a Frontend Developer.</span>
                     </motion.h1>
 
                     <motion.p variants={itemVariants} className='sm:text-lg text-base md:text-xl text-[#565d6e] dark:text-gray-400 font-light lg:pr-10 transition-colors duration-300'>
