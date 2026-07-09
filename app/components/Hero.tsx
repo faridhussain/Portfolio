@@ -4,6 +4,20 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { containerVariants, itemVariants } from '../lib/motion'
+import { getLenis } from '../lib/lenis'
+
+const scrollToContact = () => {
+    const lenis = getLenis()
+
+    if (lenis) {
+        lenis.scrollTo('#contact')
+    } else {
+        document.getElementById('contact')?.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+        })
+    }
+}
 
 export default function Hero() {
     return (
@@ -33,9 +47,9 @@ export default function Hero() {
 
                     <motion.div variants={itemVariants} className='flex flex-col items-center lg:items-start gap-4 w-full sm:w-auto'>
                         <div className='flex flex-col sm:flex-row w-full sm:w-auto gap-4'>
-                            <Link href='#contact' className='flex-1 sm:flex-none sm:w-auto bg-[#7b55ce] hover:bg-[#6942b4] duration-300 rounded-lg md:px-6 md:py-3 py-2.5 px-5 text-base md:text-lg font-medium text-white cursor-pointer text-center'>
+                            <button onClick={scrollToContact} className='flex-1 sm:flex-none sm:w-auto bg-[#7b55ce] hover:bg-[#6942b4] duration-300 rounded-lg md:px-6 md:py-3 py-2.5 px-5 text-base md:text-lg font-medium text-white cursor-pointer text-center'>
                                 Get in touch
-                            </Link>
+                            </button>
 
                             <Link
                                 href='/resume.pdf'
